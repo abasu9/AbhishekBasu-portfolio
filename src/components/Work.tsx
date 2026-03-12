@@ -3,42 +3,44 @@ import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
+const base = import.meta.env.BASE_URL;
+
 const projects = [
   {
     title: "Friday",
     category: "Privacy-First AI Meeting Assistant",
     tools: "Rust, Tauri, Next.js, FastAPI, Whisper, SQLite",
-    image: "/images/friday.jpg",
+    image: `${base}images/friday.jpg`,
   },
   {
     title: "ClutchCast",
     category: "AI-Powered Sports Analytics & Commentary Engine",
     tools: "React, TypeScript, Ollama (Llama 3), Web Speech API, Vite, NCAA API",
-    image: "/images/placeholder.webp",
+    image: `${base}images/placeholder.webp`,
   },
   {
     title: "CHQ-Summ",
     category: "A Dataset and Benchmark for Consumer Healthcare Question Summarization",
     tools: "LLaMA-3.1-8B, Mistral-7B, Gemma-7B, DeepSeek-Coder, T5, BART, ROUGE, BERTScore",
-    image: "/images/placeholder.webp",
+    image: `${base}images/placeholder.webp`,
   },
   {
     title: "Ethical RAG for Medical Retrieval",
     category: "Reducing Hallucinations in Clinical Generation",
     tools: "Python, Hugging Face, ChromaDB, BM25, Dense Retrieval, Confidence Refusal",
-    image: "/images/placeholder.webp",
+    image: `${base}images/placeholder.webp`,
   },
   {
     title: "Speculative Decoding for LLM Optimization",
     category: "Accelerating Inference in Iterative Reasoning",
     tools: "PyTorch, CUDA, TensorRT, LLaMA-3.1, Parallel Forward Prediction",
-    image: "/images/placeholder.webp",
+    image: `${base}images/placeholder.webp`,
   },
   {
     title: "FotoFind",
     category: "AI-Driven Multimodal Image Retrieval Engine",
     tools: "TensorFlow, YOLO, ViT-GPT2, EasyOCR, Flask, MySQL",
-    image: "/images/placeholder.webp",
+    image: `${base}images/placeholder.webp`,
   },
 ];
 
