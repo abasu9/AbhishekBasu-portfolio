@@ -1,5 +1,4 @@
 import { PropsWithChildren } from "react";
-import CharacterModel from "./Character";
 import "./styles/Landing.css";
 
 const Landing = ({ children }: PropsWithChildren) => {
@@ -27,8 +26,6 @@ const Landing = ({ children }: PropsWithChildren) => {
             </h2>
           </div>
         </div>
-        {/* Add CharacterModel below intro/info */}
-        <CharacterModel />
         {children}
       </div>
     </>
