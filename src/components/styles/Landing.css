@@ -4,8 +4,6 @@
   margin: auto;
   position: relative;
   height: var(--vh);
-  overflow: hidden;
-  background-color: var(--backgroundColor);
 }
 
 .landing-container {
@@ -328,8 +326,7 @@ h2.landing-info-h2 {
   .character-model {
     height: 100vh;
     bottom: 0;
-    /* Allow scroll sections like What I Do to render above the 3D canvas */
-    z-index: 0;
+    z-index: 11;
     position: fixed;
   }
 
