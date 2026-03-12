@@ -12,7 +12,7 @@ const Loading = ({ percent }: { percent: number }) => {
   const [showSkip, setShowSkip] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setShowSkip(true), 4000);
+    const t = setTimeout(() => setShowSkip(true), 2000);
     return () => clearTimeout(t);
   }, []);
 
@@ -28,8 +28,8 @@ const Loading = ({ percent }: { percent: number }) => {
   if (percent >= 100) {
     setTimeout(() => {
       setLoaded(true);
-      setTimeout(() => setIsLoaded(true), 400);
-    }, 300);
+      setTimeout(() => setIsLoaded(true), 200);
+    }, 100);
   }
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const Loading = ({ percent }: { percent: number }) => {
             module.initialFX();
           }
           setIsLoading(false);
-        }, 350);
+        }, 150);
       }
     });
   }, [isLoaded]);
@@ -116,43 +116,43 @@ const Loading = ({ percent }: { percent: number }) => {
 export default Loading;
 
 export const setProgress = (setLoading: (value: number) => void) => {
-  let percent: number = 0;
+  let percent = 0;
+  let done = false;
 
+  // Continuously tick toward 99%, slowing down as it gets higher.
+  // Never reaches 100 until `loaded()` is called.
   let interval = setInterval(() => {
-    if (percent <= 50) {
-      let rand = Math.round(Math.random() * 5);
-      percent = percent + rand;
-      setLoading(percent);
-    } else {
-      clearInterval(interval);
-      interval = setInterval(() => {
-        percent = percent + Math.round(Math.random());
-        setLoading(percent);
-        if (percent > 91) {
-          clearInterval(interval);
-        }
-      }, 2000);
-    }
+    if (done) return;
+    const remaining = 99 - percent;
+    if (remaining <= 0) return;
+    // Fast at first, gradually slower — always moving
+    const increment = Math.max(0.5, remaining * 0.08);
+    percent = Math.min(percent + increment, 99);
+    setLoading(Math.round(percent));
   }, 100);
 
   function clear() {
+    done = true;
     clearInterval(interval);
     setLoading(100);
   }
 
   function loaded() {
     return new Promise<number>((resolve) => {
+      done = true;
       clearInterval(interval);
-      interval = setInterval(() => {
+      // Quick sprint from current to 100
+      const sprint = setInterval(() => {
         if (percent < 100) {
-          percent++;
-          setLoading(percent);
+          percent = Math.min(percent + 5, 100);
+          setLoading(Math.round(percent));
         } else {
-          resolve(percent);
-          clearInterval(interval);
+          clearInterval(sprint);
+          resolve(100);
         }
-      }, 2);
+      }, 20);
     });
   }
+
   return { loaded, percent, clear };
 };

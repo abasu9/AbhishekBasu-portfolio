@@ -8,7 +8,7 @@ const projects = [
     title: "Friday",
     category: "Privacy-First AI Meeting Assistant",
     tools: "Rust, Tauri, Next.js, FastAPI, Whisper, SQLite",
-    image: "/images/friday.png",
+    image: "/images/friday.jpg",
   },
   {
     title: "ClutchCast",
