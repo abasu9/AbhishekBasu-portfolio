@@ -82,6 +82,8 @@ export function setCharTimeline(
         // Fade About out before What I Do appears (prevents overlap/ghosting)
         .to(".about-me p", { opacity: 0, duration: 1.2, delay: 3.2 }, 0)
         .to(".about-section", { opacity: 0, duration: 1.2, delay: 3.6 }, 0)
+        // Reveal "WHAT I DO" title right as the section appears
+        .to(".what-title", { opacity: 1, duration: 0.2, delay: 5.8 }, 0)
         .fromTo(
           ".character-model",
           { pointerEvents: "inherit" },

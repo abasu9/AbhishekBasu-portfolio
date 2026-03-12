@@ -26,6 +26,10 @@
   margin-bottom: 100px;
 }
 
+.what-title {
+  opacity: 1;
+}
+
 .hat-h2 {
   font-style: italic;
 }
@@ -306,6 +310,13 @@
   .what-content.what-sibling {
     min-height: 25%;
     padding: 8px 35px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  /* The title is revealed by GSAP after the About section transition */
+  .what-title {
+    opacity: 0;
   }
 }
 @media only screen and (max-width: 900px) {
