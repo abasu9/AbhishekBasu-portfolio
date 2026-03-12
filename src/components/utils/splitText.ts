@@ -53,6 +53,9 @@ export default function setSplitText() {
     );
   });
   titles.forEach((title: ParaElement) => {
+    // Skip About section title so it doesn't start hidden (autoAlpha: 0)
+    if (title.closest(".about-me")) return;
+
     if (title.anim) {
       title.anim.progress(1).kill();
       title.split?.revert();

@@ -79,7 +79,8 @@ export function setCharTimeline(
           0
         )
         .to(".about-section", { y: "30%", duration: 6 }, 0)
-        .to(".about-section", { opacity: 0, delay: 4, duration: 2 }, 0)
+        // Don't fade About fully out (keeps "About Me" visible)
+        .to(".about-section", { opacity: 0.2, delay: 4, duration: 2 }, 0)
         .fromTo(
           ".character-model",
           { pointerEvents: "inherit" },
