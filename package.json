@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "deploy:manual": "sh scripts/deploy-gh-pages.sh"
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
@@ -21,7 +22,6 @@
     "@types/three": "^0.168.0",
     "@vercel/analytics": "^1.4.1",
     "gsap": "^3.12.7",
-    "gsap-trial": "^3.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-fast-marquee": "^1.6.5",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@types/node": "^25.4.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",

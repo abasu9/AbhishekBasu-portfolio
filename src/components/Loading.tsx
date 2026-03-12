@@ -9,14 +9,27 @@ const Loading = ({ percent }: { percent: number }) => {
   const [loaded, setLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [showSkip, setShowSkip] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowSkip(true), 4000);
+    return () => clearTimeout(t);
+  }, []);
+
+  async function handleSkip() {
+    setClicked(true);
+    const { initialFX } = await import("./utils/initialFX");
+    setTimeout(() => {
+      if (initialFX) initialFX();
+      setIsLoading(false);
+    }, 350);
+  }
 
   if (percent >= 100) {
     setTimeout(() => {
       setLoaded(true);
-      setTimeout(() => {
-        setIsLoaded(true);
-      }, 1000);
-    }, 600);
+      setTimeout(() => setIsLoaded(true), 400);
+    }, 300);
   }
 
   useEffect(() => {
@@ -28,7 +41,7 @@ const Loading = ({ percent }: { percent: number }) => {
             module.initialFX();
           }
           setIsLoading(false);
-        }, 900);
+        }, 350);
       }
     });
   }, [isLoaded]);
@@ -85,6 +98,16 @@ const Loading = ({ percent }: { percent: number }) => {
             </div>
           </div>
         </div>
+        {showSkip && (
+          <button
+            type="button"
+            className="loading-skip"
+            onClick={handleSkip}
+            aria-label="Skip loading"
+          >
+            Skip
+          </button>
+        )}
       </div>
     </>
   );
