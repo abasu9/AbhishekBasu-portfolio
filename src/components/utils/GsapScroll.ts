@@ -99,12 +99,7 @@ export function setCharTimeline(
         .to(neckBone!.rotation, { x: 0.6, delay: 2, duration: 3 }, 0)
         .to(monitor.material, { opacity: 1, duration: 0.8, delay: 3.2 }, 0)
         .to(screenLight.material, { opacity: 1, duration: 0.8, delay: 4.5 }, 0)
-        .fromTo(
-          ".what-box-in",
-          { display: "none" },
-          { display: "flex", duration: 0.1, delay: 6 },
-          0
-        )
+        // No display toggling (causes flicker); content is always present via CSS
         .fromTo(
           monitor.position,
           { y: -10, z: 2 },
