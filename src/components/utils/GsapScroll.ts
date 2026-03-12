@@ -68,9 +68,8 @@ export function setCharTimeline(
         .to(camera.position, { z: 22 }, 0)
         .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
         .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
-        .to(".landing-container", { y: "40%", duration: 0.8 }, 0);
-      // Keep about-me visible (no y: -50% animation so text isn't stuck off-screen)
-      gsap.set(".about-me", { y: "0%" });
+        .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
+        .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
 
       tl2
         .to(
@@ -79,16 +78,7 @@ export function setCharTimeline(
           0
         )
         .to(".about-section", { y: "30%", duration: 6 }, 0)
-        // Fade About out before What I Do appears (prevents overlap/ghosting)
-        .to(".about-me p", { opacity: 0, duration: 1.2, delay: 3.2 }, 0)
-        .to(".about-section", { opacity: 0, duration: 1.2, delay: 3.6 }, 0)
-        // Animate the title in, but keep it fail-safe visible via CSS
-        .fromTo(
-          ".what-title",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.35, delay: 5.7, ease: "power2.out" },
-          0
-        )
+        .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0)
         .fromTo(
           ".character-model",
           { pointerEvents: "inherit" },
@@ -99,7 +89,12 @@ export function setCharTimeline(
         .to(neckBone!.rotation, { x: 0.6, delay: 2, duration: 3 }, 0)
         .to(monitor.material, { opacity: 1, duration: 0.8, delay: 3.2 }, 0)
         .to(screenLight.material, { opacity: 1, duration: 0.8, delay: 4.5 }, 0)
-        // No display toggling (causes flicker); content is always present via CSS
+        .fromTo(
+          ".what-box-in",
+          { display: "none" },
+          { display: "flex", duration: 0.1, delay: 6 },
+          0
+        )
         .fromTo(
           monitor.position,
           { y: -10, z: 2 },
