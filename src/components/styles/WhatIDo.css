@@ -9,8 +9,7 @@
   width: var(--cWidth);
   max-width: 1920px;
   margin: auto;
-  /* Must sit above the fixed 3D canvas (z-index: 11 on desktop) */
-  z-index: 15;
+  z-index: 9;
 }
 .what-box {
   width: 50%;
@@ -21,7 +20,6 @@
 }
 .what-box:first-child {
   justify-content: flex-start;
-  z-index: 20; /* above fixed character canvas */
 }
 .what-box h2 {
   font-size: calc(4vw + 25px);
@@ -33,7 +31,6 @@
 
 .what-title {
   opacity: 1;
-  z-index: 20;
 }
 
 .hat-h2 {
