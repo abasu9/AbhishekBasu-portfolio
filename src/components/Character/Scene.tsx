@@ -53,7 +53,11 @@ const Scene = () => {
       let progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
+      // Auto-complete loading after 8s even if model is still downloading
+      const maxWait = setTimeout(() => progress.clear(), 8000);
+
       loadCharacter().then((gltf) => {
+        clearTimeout(maxWait);
         if (gltf) {
           const animations = setAnimations(gltf);
           hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);

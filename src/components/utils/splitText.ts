@@ -20,9 +20,6 @@ export default function setSplitText() {
   const ToggleAction = "play pause resume reverse";
 
   paras.forEach((para: ParaElement) => {
-    // Skip About section paragraph so it stays visible (no autoAlpha: 0)
-    if (para.closest(".about-me")) return;
-
     para.classList.add("visible");
     if (para.anim) {
       para.anim.progress(1).kill();
@@ -34,10 +31,8 @@ export default function setSplitText() {
       linesClass: "split-line",
     });
 
-    const words = para.split?.words;
-    if (!words) return;
     para.anim = gsap.fromTo(
-      words,
+      para.split.words!,
       { autoAlpha: 0, y: 80 },
       {
         autoAlpha: 1,
@@ -46,16 +41,14 @@ export default function setSplitText() {
           toggleActions: ToggleAction,
           start: TriggerStart,
         },
-        duration: 0.8,
-        stagger: 0.05,
-        ease: "power2.out",
+        duration: 1,
+        ease: "power3.out",
+        y: 0,
+        stagger: 0.02,
       }
     );
   });
   titles.forEach((title: ParaElement) => {
-    // Skip About section title so it doesn't start hidden (autoAlpha: 0)
-    if (title.closest(".about-me")) return;
-
     if (title.anim) {
       title.anim.progress(1).kill();
       title.split?.revert();
@@ -64,10 +57,8 @@ export default function setSplitText() {
       type: "chars,lines",
       linesClass: "split-line",
     });
-    const chars = title.split?.chars;
-    if (!chars) return;
     title.anim = gsap.fromTo(
-      chars,
+      title.split.chars!,
       { autoAlpha: 0, y: 80, rotate: 10 },
       {
         autoAlpha: 1,
@@ -77,8 +68,10 @@ export default function setSplitText() {
           start: TriggerStart,
         },
         duration: 0.8,
+        ease: "power2.inOut",
+        y: 0,
+        rotate: 0,
         stagger: 0.03,
-        ease: "power2.out",
       }
     );
   });

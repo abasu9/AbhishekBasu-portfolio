@@ -28,9 +28,6 @@
   font-weight: 600;
   line-height: 36px;
   letter-spacing: 1px;
-  color: var(--textColor, #eae5ec);
-  opacity: 1;
-  visibility: visible;
 }
 
 @media only screen and (min-width: 600px) {
