@@ -53,8 +53,8 @@ const Scene = () => {
       let progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
-      // Auto-complete loading after 5s even if model is still downloading
-      const maxWait = setTimeout(() => progress.clear(), 5000);
+      // Auto-complete loading after 8s even if model is still downloading
+      const maxWait = setTimeout(() => progress.clear(), 8000);
 
       loadCharacter().then((gltf) => {
         clearTimeout(maxWait);
@@ -77,9 +77,6 @@ const Scene = () => {
             handleResize(renderer, camera, canvasDiv, character)
           );
         }
-      }).catch(() => {
-        clearTimeout(maxWait);
-        progress.clear();
       });
 
       let mouse = { x: 0, y: 0 },
