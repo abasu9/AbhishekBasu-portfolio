@@ -328,7 +328,8 @@ h2.landing-info-h2 {
   .character-model {
     height: 100vh;
     bottom: 0;
-    z-index: 11;
+    /* Allow scroll sections like What I Do to render above the 3D canvas */
+    z-index: 0;
     position: fixed;
   }
 
