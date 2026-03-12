@@ -314,9 +314,9 @@
 }
 
 @media only screen and (min-width: 1025px) {
-  /* The title is revealed by GSAP after the About section transition */
+  /* Keep the title fail-safe visible; GSAP may still animate it in. */
   .what-title {
-    opacity: 0;
+    opacity: 1;
   }
 }
 @media only screen and (max-width: 900px) {
