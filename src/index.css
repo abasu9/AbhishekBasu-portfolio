@@ -92,12 +92,6 @@ body {
   position: relative;
 }
 
-/* Keep scroll content above the fixed 3D canvas on desktop */
-#smooth-wrapper {
-  position: relative;
-  z-index: 20;
-}
-
 .split-line {
   overflow: hidden;
 }
