@@ -30,3 +30,6 @@ backup/
 # TypeScript build info
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
+
+# Local LFS pointer that should never be committed
+public/models/character.glb
